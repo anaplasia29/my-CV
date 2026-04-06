@@ -1,0 +1,556 @@
+%
+%Academic CV LaTeX Template
+% Author: Dubasi Pavan Kumar
+% LinkedIn: https://www.linkedin.com/in/im-pavankumar/
+% License: MIT
+%
+% For errors, suggestions, or improvements, please contact:
+% Email: pavankumard.pg19.ma@nitp.ac.in
+%
+
+
+
+\documentclass[a4paper,11pt]{article}
+
+% Package imports
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+
+
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
+
+% Hyperlink setup (moved after fancyhdr to address warning)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% URL style
+\urlstyle{same}
+
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
+\begin{document}
+\headerfontiii
+
+% Header
+\begin{center}
+    {\Huge\textbf{Suhan Son}}
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    +82-10-3250-9279 | \href{mailto:youremail@example.com}{anaplasia29@korea.ac.kr} | 
+    % \href{https://www.yourwebsite.com/}{yourwebsite.com}
+    }
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    \socialicon{\faLinkedin} \href{https://www.linkedin.com/in/sh-s-94a609207/}{LinkedIn} | 
+    \socialicon{\faGithub} \href{https://github.com/anaplasia29/}{Github} | 
+    % \ieeeicon{\includegraphics[height=1.3em]{ieee_collabratec_icon.png}} \href{https://ieee-collabratec.ieee.org/app/p/your-profile}{your-profile} |
+    % \socialicon{\faTwitter} \href{https://twitter.com/your-handle}{your-handle}
+    }
+\end{center}
+\vspace{-6mm}
+\begin{center}
+    \small{Seoul, Republic of Korea}
+\end{center}
+
+\vspace{-4mm}
+
+% 1. Objective  (optional)
+% 2. Education
+% 3. Patents and Publications
+% 4. Research Projects
+% 5. Experience
+% 6. Leadership Experience
+% 7. Honors & Awards
+% 8. Skills
+% 9. Additional Information
+% 10. References (optional, 필요 시만)
+
+
+\section{\textbf{Objective}}
+\vspace{1mm}
+\small{
+Seeking a research-focused position in Artificial Intelligence where I can advance uncertainty-aware machine learning, Bayesian inference, and stochastic modeling. I aim to develop principled and reliable learning frameworks for complex scientific and real-world systems.
+}
+% \vspace{-2mm}
+
+
+\newcommand{\resumeSubheadingEducation}[4]{
+  \item
+  \textbf{#1} \hfill #2 \\
+  \textit{\small #3} \hfill \textit{\small #4} \\
+}
+
+
+\vspace{-2mm}
+
+\section{\textbf{Education}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheadingEducation
+  {Korea University}{Seoul, Republic of Korea}
+  {Ph.D. in Electrical Engineering - Advisor: Junhee Seok}
+  {Feb. 2027 (Expected)}
+  % {}
+  % {Advisor: Junhee Seok}
+
+\resumeSubheadingEducation
+  {Korea University}{Seoul, Republic of Korea}
+  {M.S. in Electrical Engineering - Advisor: Junhee Seok}
+  {Feb. 2023}
+  % {}
+
+\resumeSubheadingEducation
+  {Korea University}{Seoul, Republic of Korea}
+  {B.S. in Industrial \& Management Engineering}
+  {Feb. 2021}
+  % {}
+
+  
+\resumeSubheadingEducation
+  {Korea University}{Sejong, Republic of Korea}
+  {B.S. in Applied Statistics \& Medical Convergence Engineering}
+  {Feb. 2021}
+  % {}
+
+
+\resumeSubheadingEducation
+  {Wooshin High School}{Ulsan, Republic of Korea}
+  {High School Diploma}
+  {Feb. 2015}
+  % {}
+% \vspace{-0.8mm}  
+
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}  
+
+\section{\texorpdfstring{\textbf{Patents and Publications} \hfill 
+\textcolor{darkblue}{\scriptsize C=Conference, J=Journal, P=Patent, S=In Submission, T=Thesis}}%
+{\textbf{Patents and Publications}}}
+
+\vspace{0.2mm}
+\small{
+\begin{enumerate}[leftmargin=*, labelsep=0.5em, align=left, widest={[\textbf{S.1}]}, itemindent=0em, label={\textbf{[\arabic*]}]}]
+
+\item[\textbf{[J.1]}] 
+Suhan Son and Junhee Seok. (2026).
+\textbf{Improving Monte Carlo Dropout Uncertainty Estimation with Stable Output Layers}.  
+\textit{Neurocomputing}, Vol. 661, 131927.  
+DOI:  {10.1016/j.neucom.2025.131927}.
+
+\item[\textbf{[J.2]}]
+Suhan Son and Junhee Seok. (Accepted, 2026).  
+\textbf{Optimal Activation Function Subset Selection via Forward and Backward Search for Enhanced Model Performance}.  
+Accepted for publication in \textit{Information Sciences} (Elsevier).
+
+\item[\textbf{[T.1]}]
+Suhan Son. (2023). 
+\textbf{Probabilistic Prediction of Semiconductor Characteristics Using Machine Learning}.  
+Master’s Thesis, Department of Electrical and Electronics Engineering, Korea University, Seoul, Republic of Korea.  
+Advisor: Junhee Seok.  
+% DOI: \href{https://doi.org/10.23186/korea.000000270211.11009.0001414}{10.23186/korea.000000270211.11009.0001414}.
+
+\end{enumerate}
+}
+
+\vspace{-4mm}
+
+
+\section{\textbf{Projects}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+  {Multi-Output Distribution-Based Calibration for Bayesian Neural Networks (Ongoing)}
+  {Keywords: Uncertainty Quantification, Distribution Calibration, Multi-Output Regression}
+  {2024 -- Present}
+  {}
+\resumeItemListStart
+  \item Developing adaptive KL-weight tuning methods for coverage-calibrated Bayesian neural networks.
+  \item Analyzing robustness and stability of multi-output predictive distributions under distribution shift.
+\resumeItemListEnd
+
+\resumeProject
+  {Heterogeneous Activation Function Subset Selection}
+  {Keywords: Activation Function Search, Heterogeneous Networks, Model Selection}
+  {2024 -- Present}
+  {}
+\resumeItemListStart
+  \item Proposing forward/backward search strategies for intra-layer heterogeneous activation assignment.
+  \item Evaluating subset performance across multiple regression benchmarks and activation families.
+\resumeItemListEnd
+
+\resumeProject
+  {Improving Uncertainty Quantification with MC Dropout and Stable Output Layer}
+  {Keywords: Uncertainty Quantification, MC Dropout}
+  {2021 -- 2025}
+  {}
+\resumeItemListStart
+  \item Developing the Stable Output Layer (SOL) to stabilize stochastic predictions in MC Dropout.
+  \item Validating calibration and OOD robustness on real-world regression datasets.
+\resumeItemListEnd
+
+\resumeProject
+  {AI-based Insurance Fraud Detection Solution} 
+  {Keywords: Fraud Detection}
+  {2024}
+  {}
+\resumeItemListStart
+    \item Developing a machine-learning-based system for detecting vehicle insurance fraud.
+\resumeItemListEnd
+
+\resumeProject
+  {Future Mobility Idea Competition (KATECH × Korea University)}
+  {Keywords: Autonomous Driving, Behavior Monitoring}
+  {2023}
+  {}
+\resumeItemListStart
+    \item Leading development of an accident-prevention system based on driver and passenger state monitoring.
+    \item Integrating traffic APIs and decision logic for route optimization and safety-aware driving control.
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\vspace{-4mm}
+
+
+\section{\textbf{Experience}}
+\vspace{-0.4mm}
+  
+\resumeSubHeadingListStart
+\resumeSubheading
+    {Teaching Assistant, “Data Learning \& Intelligence”}{Korea University}
+    {Department of Electrical Engineering}{2022 -- 2025}
+    \resumeItemListStart
+        \item Supported end-to-end course operations, including management of weekly quizzes, midterm exam logistics, LMS announcements, and content updates.
+        \item Oversaw attendance tracking, grading support, and the organization of assignments and evaluation materials for more than 300 students.
+        \item Coordinated communication between instructor and students, addressing academic inquiries and providing assistance related to coursework, assessments, and technical issues.
+        \item Managed course-related data workflows, ensuring accurate record-keeping, timely publication of course materials, and smooth execution of assessment procedures.
+        \item Contributed to stable course administration by maintaining structured documentation, assisting with scheduling, and ensuring reproducibility of course operations across semesters.
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\resumeSubHeadingListStart
+\resumeSubheading
+    {Teaching Assistant, “Object-Oriented Programming”}{Korea University}
+    {Department of Electrical Engineering}{2021}
+\resumeItemListStart
+    \item Assisted in the administration of the undergraduate programming course, including assignment management, grading, and student consultation.
+    \item Provided support for C++ programming exercises, debugging sessions, and object-oriented design principles.
+    \item Supported development of coding examples, algorithm explanations, and documentation used in weekly lectures.
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+
+\resumeSubHeadingListStart
+  \resumeSubheading
+  {{Puzzle AI }}{Daejeon, Republic of Korea}
+  {Data Researcher}{2019 - 2022}
+  \resumeItemListStart
+    \item Performed end-to-end data preprocessing, cleaning, and quality control for large-scale audio and sensor datasets, ensuring reliable inputs for downstream machine learning pipelines.
+    \item Led overall data workflow management, including dataset versioning, annotation oversight, and integration of new data sources into the training pipeline.
+    \item Conducted research on SpecAugmentation strategies to improve model robustness under noisy and low-resource scenarios, contributing to measurable performance gains in internal benchmarks.
+    \item Developed automated denoising modules for real-world audio data, reducing manual preprocessing effort and increasing dataset usability.
+    \item Managed research servers and environments, including Linux system administration and Docker-based workflow management, optimizing system stability, storage structure, and compute efficiency for ML experimentation.
+  \resumeItemListEnd
+\resumeSubHeadingListEnd
+\vspace{-4mm}
+
+
+\section{\textbf{Leadership Experience}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+% \resumeProject
+%   {Industrial accident prevention tasks}
+%   {Organization/Institution Name}
+%   {Oct. 2025 - Present}
+%   {{}[\href{https://organization-b-link.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Key responsibility or achievement in this role
+%   \item Quantifiable impact or improvement made during tenure
+%   \item Initiative taken or project led
+% \resumeItemListEnd
+
+\resumeProject
+  {Samsung–Korea University Strategic Industry–Academia Project (Cohort 3)}
+  {“Development of a Self-Evaluation Simulator via Probabilistic Regression Prediction”}
+  {2021 -- 2025}
+  {}
+\resumeItemListStart
+    \item Served as the lead student researcher, coordinating research progress, reporting, and technical communication between the university team and Samsung engineers.
+    \item Designed machine learning pipelines for probabilistic regression and uncertainty estimation, supporting self-evaluation simulation workflows.
+    \item Led preprocessing, feature engineering, and validation processes for semiconductor measurement datasets, improving robustness and modeling consistency.
+    \item Contributed to milestone documentation and collaborative meetings as part of the Samsung–Korea University Strategic Industry–Academia Program.
+\resumeItemListEnd
+
+\resumeProject
+  {AI-Based Trend Forecasting for Women's Handbags}
+  {Justwonder Co., Ltd.}
+  {2022 -- 2023}
+  {}
+\resumeItemListStart
+    \item Served as the lead student researcher for an industry collaboration project aimed at forecasting fashion trends using large-scale image and metadata analysis.
+    \item Developed automated pipelines for crawling influencer images from Instagram and extracting handbag instances using object detection models.
+    \item Built retrieval modules that matched detected handbags to specific models via Google Image Search and multi-source metadata comparison (e.g., Musinsa, MustIt).
+    \item Collected and structured product metadata from multiple e-commerce platforms to identify high-demand items and emerging market trends.
+    \item Performed clustering-based trend analysis to group popular handbag styles and discover latent patterns in consumer preference.
+    \item Generated new handbag design concepts by applying generative modeling techniques informed by cluster-level attributes and trend keywords.
+\resumeItemListEnd
+
+
+\resumeSubHeadingListEnd
+
+\vspace{-6mm}
+
+
+
+
+\section{\textbf{Honors and Awards}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+  {College of Engineering Future Talent Scholarship}
+  {Korea University}
+  {May 2023}
+  {}
+\resumeItemListStart
+  \item Selected as a Future Talent Scholar for outstanding academic performance and demonstrated research potential among newly admitted graduate students in the College of Engineering.
+  \item Awarded a scholarship and official certificate in recognition of excellence and future research capability.
+\resumeItemListEnd
+
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Skills}}
+\vspace{-0.4mm}
+\resumeHeadingSkillStart
+
+\resumeSubItem{Programming Languages:}
+    {Python, C/C++, MATLAB, etc.}
+
+\resumeSubItem{Machine Learning \& Deep Learning:}
+    {PyTorch, TensorFlow, JAX, scikit-learn, GPyTorch, GPFlow, etc.}
+
+\resumeSubItem{Uncertainty Quantification:}
+    {Monte Carlo Dropout, Bootstrap Ensembles, Bayesian Neural Networks, 
+     Gaussian Process Regression, SWAG, Predictive Interval Calibration, etc.}
+
+\resumeSubItem{Mathematics \& Statistics:}
+    {Bayesian Statistics, Probability Theory, Linear Algebra, Optimization, 
+     Statistical Modeling, Inference Methods, Regression Analysis, 
+     Linear/Integer Programming, etc.}
+
+
+\resumeSubItem{DevOps \& System Management:}
+    {Linux (Ubuntu), Docker, SSH/SFTP, etc.}
+
+\resumeSubItem{Software \& Tools:}
+    {Git/GitHub, LaTeX, Jupyter, VS Code, etc.}
+
+% \resumeSubItem{Cloud \& Compute Platforms:}
+%     {Google Colab Pro, AWS EC2, Azure GPU Instances, etc.}
+
+\resumeSubItem{Research Skills:}
+    {Experimental Design, Reproducible ML Pipelines, Hyperparameter Optimization, 
+     Dataset Construction, Scientific Writing, etc.}
+
+\resumeHeadingSkillEnd
+% \vspace{-3mm}
+
+\section{\textbf{Certifications}}
+\vspace{-0.2mm}
+\resumeSubHeadingListStart
+\resumePOR{}{
+\textbf{Big-Data Analysis Engineer}
+}{Dec. 2021}
+% \resumePOR{}{
+% \textbf{Certifying Body:} {{\href{https://certification-link-b.com}{Certification B}}}}{Month Year}
+% \resumePOR{}{
+% \textbf{Certifying Body:} {{\href{https://certification-link-c.com}{Certification C}}}}{Month Year}
+% \resumePOR{}{\href{https://certification-link-d.com}{
+% \textbf{Certification D}
+% }}{Month Year}
+
+\resumeSubHeadingListEnd
+\vspace{-3mm}
+
+\section{\textbf{Additional Information}}
+\vspace{-0.4mm}
+\small{
+\textbf{Languages:} Korean (Native), English (Reading \& Academic Writing Proficiency)
+
+\textbf{Interests:} Neural Network Optimization, Bayesian Machine Learning, Uncertainty Quantification, Travel, Animals
+}
+% \vspace{-4mm}
+
+
+\section{\textbf{References}}
+\vspace{-0.2mm}
+\small{
+\begin{enumerate}[leftmargin=*,labelsep=2mm]
+\item \textbf{Reference Person 1}\\
+   Job Title, Department\\
+   Organization/Institution Name\\
+   Email: email1@example.com\\
+   Phone: +X-XXX-XXX-XXXX\\
+   \textit{Relationship: [e.g., Thesis Advisor, Manager, etc.]}
+
+\item \textbf{Reference Person 2}\\
+   Job Title, Department\\
+   Organization/Institution Name\\
+   Email: email2@example.com\\
+   Phone: +X-XXX-XXX-XXXX\\
+   \textit{Relationship: [e.g., Project Supervisor, Colleague, etc.]}
+
+\item \textbf{Reference Person 3}\\
+   Job Title, Department\\
+   Organization/Institution Name\\
+   Email: email3@example.com\\
+   Phone: +X-XXX-XXX-XXXX\\
+   \textit{Relationship: [e.g., Mentor, Collaborator, etc.]}
+\end{enumerate}
+}
+
+\end{document}
