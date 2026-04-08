@@ -4,8 +4,8 @@ This repository contains my academic CV written in LaTeX and automatically deplo
 
 ## Live CV
 
-- Website: `https://anaplasia29.github.io/<repo-name>/`
-- PDF: `https://anaplasia29.github.io/<repo-name>/cv.pdf`
+- Website: `https://anaplasia29.github.io/my-CV/`
+- PDF: `https://anaplasia29.github.io/my-CV/cv.pdf`
 
 > Replace `<repo-name>` with your actual GitHub repository name.
 
