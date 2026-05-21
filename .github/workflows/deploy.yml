@@ -3,6 +3,11 @@ name: Build LaTeX CV and Deploy to GitHub Pages
 on:
   push:
     branches: ["main"]
+    paths:
+      - "**.tex"
+      - "**.bib"
+      - "site/**"
+      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 permissions:
@@ -11,7 +16,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
@@ -26,6 +31,7 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
+          latexmk_use_xelatex: true
 
       - name: Prepare site
         run: |
@@ -41,6 +47,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
